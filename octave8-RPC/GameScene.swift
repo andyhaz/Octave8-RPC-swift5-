@@ -11,10 +11,13 @@ import GameplayKit
 class GameScene: SKScene {
     
     private var label : SKLabelNode?
+    private var playerNode : SKShapeNode?
     private var spinnyNode : SKShapeNode?
-    
+
     override func didMove(to view: SKView) {
         print("init")
+        let myImage = sprintImage()
+        addChild(myImage.sprite())
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -32,5 +35,15 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    }
+}
+//load image
+class sprintImage: SKSpriteNode {
+    
+    func sprite() -> SKSpriteNode {
+        let myImage = SKSpriteNode(imageNamed: "game-card-title")
+        myImage.setScale(0.3)
+        myImage.position =  CGPoint(x: 200, y: 100)
+        return myImage
     }
 }
